@@ -2,6 +2,7 @@ using AnnaBank.Application.Commands;
 using AnnaBank.Application.Validations;
 using AnnaBank.Infra.Interfaces;
 using AnnaBank.Infra.Repositories;
+using AnnaBank.Infra.Seeders;
 using AnnaBank.Middlewares;
 using AnnaBank.Services;
 using AnnaBank.Services.Interfaces;
@@ -49,6 +50,8 @@ internal class Program
         app.UseAuthorization();
 
         app.UseMiddleware<ErrorHandlerMiddleware>();
+
+        app.PopulateSeeder();
 
         app.MapControllers();
 

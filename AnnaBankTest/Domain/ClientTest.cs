@@ -1,5 +1,5 @@
 using AnnaBank.Domain;
-using AnnaBank.Exceptions;
+using AnnaBank.Domain.Exceptions;
 using FluentAssertions;
 
 namespace AnnaBankTest.Domain
@@ -66,13 +66,32 @@ namespace AnnaBankTest.Domain
         }
 
         [Fact]
-        public void ClientCreateWithBalanceWithZero()
+        public void ClientCreateCantBeAcceptNegativeBalance()
+        {
+            FluentActions.Invoking(() => new Client(_validName, _validIBAN, -200))
+                .Should()
+                .Throw<DomainException>()
+                .WithMessage("Balance can't be negative.");
+        }
+
+        [Fact]
+        public void ClientCreateWithBalanceWithoutValue()
         {
             Client client = new(_validName, _validIBAN);
 
             client.Name.Should().Be(_validName);
             client.IBAN.Should().Be(_validIBAN);
             client.Balance.Should().Be(0m);
+        }
+
+        [Fact]
+        public void ClientCreateWithBalanceWithValue()
+        {
+            Client client = new(_validName, _validIBAN, 200);
+
+            client.Name.Should().Be(_validName);
+            client.IBAN.Should().Be(_validIBAN);
+            client.Balance.Should().Be(200m);
         }
 
         [Fact]
