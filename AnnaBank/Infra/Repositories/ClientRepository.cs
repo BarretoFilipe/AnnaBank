@@ -27,11 +27,5 @@ namespace AnnaBank.Infra.Repositories
                 .AsQueryable()
                .FirstOrDefaultAsync(x => x.IBAN == iban);
         }
-
-        public async Task Create(Client client)
-        {
-            await _context.Clients.AddAsync(client);
-            await _context.SaveChangesAsync();
-        }
     }
 }
