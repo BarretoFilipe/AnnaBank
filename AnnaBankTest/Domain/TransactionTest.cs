@@ -1,5 +1,5 @@
 using AnnaBank.Domain;
-using AnnaBank.Exceptions;
+using AnnaBank.Domain.Exceptions;
 using FluentAssertions;
 
 namespace AnnaBankTest.Domain
@@ -41,6 +41,12 @@ namespace AnnaBankTest.Domain
                 .Should()
                 .Throw<DomainException>()
                 .WithMessage("The sender is required.");
+
+            Guid? guid = null;
+            FluentActions.Invoking(() => new Transaction(100m, guid.GetValueOrDefault(), _validReceiver))
+                .Should()
+                .Throw<DomainException>()
+                .WithMessage("The sender is required.");
         }
 
         [Fact]
@@ -50,8 +56,14 @@ namespace AnnaBankTest.Domain
                 .Should()
                 .Throw<DomainException>()
                 .WithMessage("The receiver is required.");
+
+            Guid? guid = null;
+            FluentActions.Invoking(() => new Transaction(100m, _validSender, guid.GetValueOrDefault()))
+                .Should()
+                .Throw<DomainException>()
+                .WithMessage("The receiver is required.");
         }
-        
+
         [Fact]
         public void SenderAndReceiverCantBeTheSame()
         {

@@ -1,4 +1,4 @@
-﻿namespace AnnaBank.Exceptions
+﻿namespace AnnaBank.Domain.Exceptions
 {
     public class DomainException : Exception
     {
