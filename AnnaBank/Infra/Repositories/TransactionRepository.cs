@@ -6,9 +6,9 @@ namespace AnnaBank.Infra.Repositories
 {
     public class TransactionRepository : ITransactionRepository
     {
-        private readonly DatabaseContext _context;
+        private readonly DataBaseContext _context;
 
-        public TransactionRepository(DatabaseContext databaseContext)
+        public TransactionRepository(DataBaseContext databaseContext)
         {
             _context = databaseContext;
         }

@@ -19,7 +19,7 @@ internal class Program
         // Add services to the container.
         builder.Services.AddControllers();
 
-        builder.Services.AddDbContext<DatabaseContext>(options =>
+        builder.Services.AddDbContext<DataBaseContext>(options =>
         {
             options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
         });

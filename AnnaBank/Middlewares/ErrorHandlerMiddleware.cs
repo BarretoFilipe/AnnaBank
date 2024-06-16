@@ -1,5 +1,5 @@
 ﻿using AnnaBank.Abstractions;
-using AnnaBank.Exceptions;
+using AnnaBank.Domain.Exceptions;
 using System.Net;
 using System.Text.Json;
 

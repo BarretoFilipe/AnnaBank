@@ -3,19 +3,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GenericController.Persistence
 {
-    public class DatabaseContext : DbContext
+    public class DataBaseContext : DbContext
     {
         public DbSet<Client> Clients { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
 
-        public DatabaseContext(DbContextOptions<DatabaseContext> options)
+        public DataBaseContext(DbContextOptions<DataBaseContext> options)
             : base(options)
         {
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(DataBaseContext).Assembly);
         }
     }
 }

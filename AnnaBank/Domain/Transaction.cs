@@ -1,4 +1,4 @@
-﻿using AnnaBank.Exceptions;
+﻿using AnnaBank.Domain.Exceptions;
 
 namespace AnnaBank.Domain
 {

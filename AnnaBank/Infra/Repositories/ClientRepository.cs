@@ -7,9 +7,9 @@ namespace AnnaBank.Infra.Repositories
 {
     public class ClientRepository : IClientRepository
     {
-        private readonly DatabaseContext _context;
+        private readonly DataBaseContext _context;
 
-        public ClientRepository(DatabaseContext databaseContext)
+        public ClientRepository(DataBaseContext databaseContext)
         {
             _context = databaseContext;
         }
