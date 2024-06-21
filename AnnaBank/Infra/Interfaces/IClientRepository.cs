@@ -2,7 +2,7 @@
 
 namespace AnnaBank.Infra.Interfaces
 {
-    public interface IClientRepository
+    public interface IClientRepository : IRepository
     {
         Task<Client?> GetById(Guid id);
 
