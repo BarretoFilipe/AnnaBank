@@ -2,5 +2,5 @@
 
 namespace AnnaBank.Abstractions
 {
-    public sealed record Error(HttpStatusCode statusCode, string? message);
+    public sealed record Error(HttpStatusCode StatusCode, string? Message);
 }

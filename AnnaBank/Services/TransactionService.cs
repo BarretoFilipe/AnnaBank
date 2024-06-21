@@ -25,7 +25,7 @@ namespace AnnaBank.Services
             {
                 return Result.Failure(TransactionError.NotFound("Sender Id"));
             }
-            if (0 > (sender.Balance - command.Amount))
+            if ((sender.Balance - command.Amount) < 0)
             {
                 return Result.Failure(TransactionError.SenderNotHaveBalance);
             }

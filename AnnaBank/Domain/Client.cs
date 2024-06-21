@@ -18,8 +18,8 @@ namespace AnnaBank.Domain
             }
 
             if (string.IsNullOrWhiteSpace(iban)
-                || iban.Length <= 15
-                || iban.Length >= 33)
+                || iban.Length < 15
+                || iban.Length > 33)
             {
                 throw new DomainException("The IBAN must be between 15 and 33 characters.");
             }
