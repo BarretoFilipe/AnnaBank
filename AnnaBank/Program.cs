@@ -1,15 +1,12 @@
 using AnnaBank.Application.Commands;
 using AnnaBank.Application.Validations;
-using AnnaBank.Infra.Interfaces;
-using AnnaBank.Infra.Repositories;
 using AnnaBank.Infra.Seeders;
 using AnnaBank.Middlewares;
 using AnnaBank.Services;
 using AnnaBank.Services.Interfaces;
 using AnnaBank.Shared.Extensions;
 using FluentValidation;
-using GenericController.Persistence;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 internal class Program
 {
@@ -32,7 +29,19 @@ internal class Program
 
         builder.Services.AddRepositories();
 
-        builder.Services.AddSwaggerGen();
+        builder.Services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1",
+                new OpenApiInfo()
+                {
+                    Title = "Anna Bank - V1",
+                    Version = "v1"
+                }
+             );
+
+            var filePath = Path.Combine(AppContext.BaseDirectory, "AnnaBank.xml");
+            c.IncludeXmlComments(filePath);
+        });
 
         var app = builder.Build();
 

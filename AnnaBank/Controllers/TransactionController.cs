@@ -21,7 +21,15 @@ namespace AnnaBank.Controllers
             _transactionService = transactionService;
         }
 
+        /// <summary>
+        /// Transfer money between bank clients
+        /// </summary>
         [HttpPost]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Post([FromBody] CreateTransactionCommand createTransactionCommand)
         {
             var validationResult = await _validator.ValidateAsync(createTransactionCommand);
